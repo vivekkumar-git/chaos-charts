@@ -43,4 +43,3 @@ spec:
              ## percentage of total pods to target
             - name: PODS_AFFECTED_PERC
               value: ''
-              
