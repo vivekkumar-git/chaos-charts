@@ -38,29 +38,44 @@ spec:
           - "update" 
           - "delete" 
           - "deletecollection" 
-    image: "litmuschaos/py-runner:latest"
-    imagePullPolicy: Always
+    image: "mailtovivek87/litmus-python-chart-path:v3"
+    imagePullPolicy: Never
     args:
     - -c
-    - python3 -u experiment
+    - python3 -u experiment -name chaos
     command:
     - /bin/bash
     env:
 
     - name: TOTAL_CHAOS_DURATION
-      value: '' 
+      value: '30' 
 
     - name: CHAOS_INTERVAL
-      value: ''
+      value: '30'
 
     - name: LIB
       value: ''
 
     - name: RAMP_TIME
       value: ''
+
+    - name: APP_NAMESPACE
+      value: 'litmus'
+
+    - name: APP_LABEL
+      value: 'app=nginx'
+
+    - name: APP_KIND
+      value: 'deployments'
+
+    - name: FORCE
+      value: 'true'
+
+    - name: SEQUENCE
+      value: 'parallel'
       
     labels:
-      name: sample-exec-chaos
+      name: sample-exec-chaos-pd
       app.kubernetes.io/part-of: litmus
       app.kubernetes.io/component: experiment-job
       app.kubernetes.io/version: latest 
