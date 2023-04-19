@@ -1,0 +1,94 @@
+apiVersion: litmuschaos.io/v1alpha1
+description:
+  message: |
+    Execute sample chaos
+kind: ChaosExperiment
+metadata:
+  name: sample-exec-chaos
+  labels:
+    name: sample-exec-chaos
+    app.kubernetes.io/part-of: litmus
+    app.kubernetes.io/component: chaosexperiment
+    app.kubernetes.io/version: latest
+spec:
+  definition:
+    scope: Namespaced
+    permissions:
+      - apiGroups:
+          - ""
+          - "batch"
+          - "apps"
+          - "litmuschaos.io"
+        resources:
+          - "jobs"
+          - "pods"
+          - "pods/log"
+          - "events"
+          - "deployments"
+          - "replicasets"
+          - "pods/exec"
+          - "chaosengines"
+          - "chaosexperiments"
+          - "chaosresults"
+        verbs:
+          - "create"
+          - "list"
+          - "get"
+          - "patch"
+          - "update"
+          - "delete"
+          - "deletecollection"
+    image: "kaleoum/py-runner:ci"
+    imagePullPolicy: Always
+    args:
+    - -c
+    - python3 -u experiment -name chaos
+    command:
+    - /bin/bash
+    env:
+
+    - name: TOTAL_CHAOS_DURATION
+      value: '15'
+
+    # Period to wait before and after injection of chaos in sec
+    - name: RAMP_TIME
+      value: ''
+
+    - name: FORCE
+      value: 'true'
+
+    - name: CHAOS_INTERVAL
+      value: '5'
+    - name: APP_NAMESPACE
+      value: 'default'
+
+    - name: APP_LABEL
+      value: 'app=nginx'
+
+    - name: APP_KIND
+      value: 'deployments'
+
+    ## percentage of total pods to target
+    - name: PODS_AFFECTED_PERC
+      value: ''
+
+    - name: LIB
+      value: 'litmus'    
+
+    - name: TARGET_PODS
+      value: ''
+
+    # To select pods on specific node(s)
+    - name: NODE_LABEL
+      value: ''
+
+    ## it defines the sequence of chaos execution for multiple target pods
+    ## supported values: serial, parallel
+    - name: SEQUENCE
+      value: 'parallel'
+      
+    labels:
+      name: pod-delete
+      app.kubernetes.io/part-of: litmus
+      app.kubernetes.io/component: experiment-job
+      app.kubernetes.io/version: latest

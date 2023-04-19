@@ -1,0 +1,37 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: sample-exec-chaos
+spec:
+  # It can be active/stop
+  engineState: 'active'
+  #ex. values: ns1:name=percona,ns2:run=nginx
+  auxiliaryAppInfo: ''
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: sample-exec-chaos
+      spec:
+        components:
+          env:
+            # set chaos duration (in sec) as desired
+            - name: TOTAL_CHAOS_DURATION
+              value: '30'
+
+            # set chaos interval (in sec) as desired
+            - name: CHAOS_INTERVAL
+              value: '10'
+            - name: APP_NAMESPACE
+              value: 'default'
+
+            - name: APP_LABEL
+              value: 'app=nginx'
+
+            - name: APP_KIND
+              value: 'deployments'
+            # pod failures without '--force' & default terminationGracePeriodSeconds
+            - name: FORCE
+              value: 'false'
+
+             ## percentage of total pods to target
+            - name: PODS_AFFECTED_PERC
+              value: ''
