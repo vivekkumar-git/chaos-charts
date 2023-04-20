@@ -1,0 +1,5 @@
+packageName: random-test
+experiments:
+  - name: random-chaos
+    CSV: random-chaos.chartserviceversion.yaml
+    desc: "random-chaos"
