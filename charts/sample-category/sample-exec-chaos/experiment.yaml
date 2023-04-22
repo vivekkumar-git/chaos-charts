@@ -42,7 +42,7 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment
+    - python3 -u experiment -n chaos
     command:
     - /bin/bash
     env:
