@@ -48,15 +48,38 @@ spec:
     env:
 
     - name: TOTAL_CHAOS_DURATION
-      value: '' 
+      value: '15'
+
+    # Period to wait before and after injection of chaos in sec
+    - name: RAMP_TIME
+      value: ''
+
+    - name: FORCE
+      value: 'true'
 
     - name: CHAOS_INTERVAL
+      value: '5'
+    - name: APP_NAMESPACE
+      value: 'default'
+
+    - name: APP_LABEL
+      value: 'app=nginx'
+
+    - name: APP_KIND
+      value: 'deployments'
+
+    ## percentage of total pods to target
+    - name: PODS_AFFECTED_PERC
       value: ''
 
     - name: LIB
+      value: 'litmus'    
+
+    - name: TARGET_PODS
       value: ''
 
-    - name: RAMP_TIME
+    # To select pods on specific node(s)
+    - name: NODE_LABEL
       value: ''
       
     labels:

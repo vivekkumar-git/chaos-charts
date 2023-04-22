@@ -4,7 +4,7 @@ metadata:
   name: nginx-chaos
 spec:
   appinfo:
-    appns: 'default'
+    appns: 'litmus'
     applabel: 'app=nginx'
     appkind: 'deployment'
   # It can be active/stop
@@ -26,4 +26,18 @@ spec:
             # set chaos interval (in sec) as desired
             - name: CHAOS_INTERVAL
               value: '10'
-              
+
+            - name: APP_NAMESPACE
+              value: 'default'
+
+            - name: APP_LABEL
+              value: 'app=nginx'
+
+            - name: APP_KIND
+              value: 'deployments'
+
+            - name: FORCE
+              value: 'false'
+
+            - name: PODS_AFFECTED_PERC
+              value: ''            

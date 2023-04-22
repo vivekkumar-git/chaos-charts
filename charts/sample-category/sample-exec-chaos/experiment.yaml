@@ -48,16 +48,34 @@ spec:
     env:
 
     - name: TOTAL_CHAOS_DURATION
-      value: '' 
+      value: '30' 
+    
+    - name: CHAOS_INTERVAL
+      value: '30'
+
+    - name: APP_NAMESPACE
+      value: 'default'
+
+    - name: APP_LABEL
+      value: 'app=nginx'
 
     - name: CHAOS_INTERVAL
       value: ''
 
-    - name: LIB
+    - name: PODS_AFFECTED_PERC
       value: ''
+
+    - name: LIB
+      value: 'litmus'
+
+    - name: APP_KIND
+      value: 'deployments'
 
     - name: RAMP_TIME
       value: ''
+
+    - name: SEQUENCE
+      value: 'parallel'
       
     labels:
       name: sample-exec-chaos
