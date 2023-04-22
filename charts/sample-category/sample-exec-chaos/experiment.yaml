@@ -38,7 +38,7 @@ spec:
           - "update" 
           - "delete" 
           - "deletecollection" 
-    image: "litmuschaos/py-runner:latest"
+    image: "mailtovivek87/litmus-python-chart-path:v4"
     imagePullPolicy: Always
     args:
     - -c

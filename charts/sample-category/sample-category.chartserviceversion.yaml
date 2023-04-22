@@ -23,8 +23,8 @@ spec:
   provider: 
     name: ChaosNative
   links: 
-    - name:Documentation 
-      url:https://docs.litmuschaos.io/docs/getstarted/  
+    - name: Documentation 
+      url: https://docs.litmuschaos.io/docs/getstarted/  
   icon:
     - url: 
       mediatype: ""
