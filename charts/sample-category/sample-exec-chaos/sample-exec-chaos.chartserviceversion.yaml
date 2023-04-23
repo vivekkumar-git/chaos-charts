@@ -18,8 +18,8 @@ spec:
     - "Minikube" 
   maturity: alpha
   maintainers: 
-    - name:oumkale 
-      email:oumkale@chaosnative.com 
+    - name: oumkale 
+      email: oumkale@chaosnative.com 
   minKubeVersion: 1.12.0 
   provider: 
     name: ChaosNative
@@ -27,8 +27,8 @@ spec:
     app.kubernetes.io/component: chartserviceversion
     app.kubernetes.io/version: latest
   links: 
-    - name:Documentation 
-      url:https://docs.litmuschaos.io/docs/getstarted/ 
+    - name: Documentation 
+      url: https://docs.litmuschaos.io/docs/getstarted/ 
   icon:
     - url: 
       mediatype: ""
