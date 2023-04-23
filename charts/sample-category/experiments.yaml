@@ -38,48 +38,25 @@ spec:
           - "update" 
           - "delete" 
           - "deletecollection" 
-    image: "mailtovivek87/litmus-python-chart-path:v4"
+    image: "litmuschaos/py-runner:latest"
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment -name chaos
+    - python3 -u experiment
     command:
     - /bin/bash
     env:
 
     - name: TOTAL_CHAOS_DURATION
-      value: '15'
-
-    # Period to wait before and after injection of chaos in sec
-    - name: RAMP_TIME
-      value: ''
-
-    - name: FORCE
-      value: 'true'
+      value: '' 
 
     - name: CHAOS_INTERVAL
-      value: '5'
-    - name: APP_NAMESPACE
-      value: 'default'
-
-    - name: APP_LABEL
-      value: 'app=nginx'
-
-    - name: APP_KIND
-      value: 'deployments'
-
-    ## percentage of total pods to target
-    - name: PODS_AFFECTED_PERC
       value: ''
 
     - name: LIB
-      value: 'litmus'    
-
-    - name: TARGET_PODS
       value: ''
 
-    # To select pods on specific node(s)
-    - name: NODE_LABEL
+    - name: RAMP_TIME
       value: ''
       
     labels:
