@@ -38,11 +38,11 @@ spec:
           - "update" 
           - "delete" 
           - "deletecollection" 
-    image: "litmuschaos/py-runner:latest"
+    image: "mailtovivek87/litmus-python-chart-path:v5"
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment
+    - python3 -u experiment -name sample-exec-chaos
     command:
     - /bin/bash
     env:
